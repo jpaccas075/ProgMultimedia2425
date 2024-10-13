@@ -3,6 +3,8 @@ import 'package:drawer/screens/name_screen.dart';
 import 'package:drawer/screens/row_photos_screen.dart';
 import 'package:drawer/screens/column_photos_screen.dart';
 import 'package:drawer/screens/icons_screen.dart';
+import 'package:drawer/screens/challenge_screen.dart';
+import 'package:drawer/screens/disposition_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -69,6 +71,26 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const IconsScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.stadium),
+              title: const Text('Reto'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ChallengeScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.park_outlined),
+              title: const Text('Disposición'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DispositionScreen()),
                 );
               },
             ),

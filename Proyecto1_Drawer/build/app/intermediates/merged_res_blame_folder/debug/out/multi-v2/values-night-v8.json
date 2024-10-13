@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.drawer.app-mergeDebugResources-4:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.drawer.app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Desarrollo\\ProyectosFlutter\\Proyecto1_Drawer\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\Jorge\\Desktop\\Proyecto1_Drawer\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
