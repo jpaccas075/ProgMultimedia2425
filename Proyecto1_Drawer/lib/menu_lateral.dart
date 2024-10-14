@@ -5,6 +5,7 @@ import 'package:drawer/screens/column_photos_screen.dart';
 import 'package:drawer/screens/icons_screen.dart';
 import 'package:drawer/screens/challenge_screen.dart';
 import 'package:drawer/screens/disposition_screen.dart';
+import 'package:drawer/screens/counter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -91,6 +92,16 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const DispositionScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.replay_circle_filled_rounded),
+              title: const Text('Contador'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CounterScreen()),
                 );
               },
             ),
