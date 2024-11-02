@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:drawer/screens/name_screen.dart';
-import 'package:drawer/screens/row_photos_screen.dart';
-import 'package:drawer/screens/column_photos_screen.dart';
-import 'package:drawer/screens/icons_screen.dart';
-import 'package:drawer/screens/challenge_screen.dart';
-import 'package:drawer/screens/disposition_screen.dart';
-import 'package:drawer/screens/counter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,10 +29,7 @@ class HomeScreen extends StatelessWidget {
                 leading: const Icon(Icons.person),
                 title: const Text('Nombre y Apellidos'),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const NameScreen()),
-                  );
+                  Navigator.pushNamed(context, '/name');
                 },
               ),
             ),
@@ -47,62 +37,56 @@ class HomeScreen extends StatelessWidget {
               leading: const Icon(Icons.photo),
               title: const Text('Fotos en Fila'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RowPhotosScreen()),
-                );
+                Navigator.pushNamed(context, '/rowPhotos');
               },
             ),
             ListTile(
               leading: const Icon(Icons.photo_album),
               title: const Text('Fotos en Columna'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ColumnPhotosScreen()),
-                );
+                Navigator.pushNamed(context, '/columnPhotos');
               },
             ),
             ListTile(
               leading: const Icon(Icons.star),
               title: const Text('Iconos'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const IconsScreen()),
-                );
+                Navigator.pushNamed(context, '/icons');
               },
             ),
             ListTile(
               leading: const Icon(Icons.stadium),
               title: const Text('Reto'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ChallengeScreen()),
-                );
+                Navigator.pushNamed(context, '/challenge');
               },
             ),
             ListTile(
               leading: const Icon(Icons.park_outlined),
               title: const Text('Disposición'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DispositionScreen()),
-                );
+                Navigator.pushNamed(context, '/disposition');
               },
             ),
             ListTile(
               leading: const Icon(Icons.replay_circle_filled_rounded),
               title: const Text('Contador'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CounterScreen()),
-                );
+                Navigator.pushNamed(context, '/counter');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_camera_rounded),
+              title: const Text('Instagram'),
+              onTap: () {
+                Navigator.pushNamed(context, '/instagram');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.gamepad_rounded),
+              title: const Text('Juego'),
+              onTap: () {
+                Navigator.pushNamed(context, '/game');
               },
             ),
           ],
