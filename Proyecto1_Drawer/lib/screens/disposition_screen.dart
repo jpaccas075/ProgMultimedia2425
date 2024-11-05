@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class DispositionScreen extends StatelessWidget {
   const DispositionScreen({super.key});
@@ -13,6 +14,7 @@ class DispositionScreen extends StatelessWidget {
         elevation: 10.0,
         shadowColor: Colors.black.withOpacity(1),
       ),
+      drawer: const AppDrawer(),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 import 'dart:math';
 import 'dart:async';
 
@@ -108,6 +109,7 @@ class _GameScreenState extends State<GameScreen> {
         elevation: 10.0,
         shadowColor: Colors.black.withOpacity(1),
       ),
+      drawer: const AppDrawer(),
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(

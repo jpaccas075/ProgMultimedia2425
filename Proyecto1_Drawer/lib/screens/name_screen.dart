@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NameScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class NameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nombre y Apellidos'),
       ),
+      drawer: const AppDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

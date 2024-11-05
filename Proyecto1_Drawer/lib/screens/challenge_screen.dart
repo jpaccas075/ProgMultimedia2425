@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class ChallengeScreen extends StatelessWidget {
   const ChallengeScreen({super.key});
@@ -21,6 +22,7 @@ class ChallengeScreen extends StatelessWidget {
           elevation: 10.0,
           shadowColor: Colors.black.withOpacity(0.5),
         ),
+        drawer: const AppDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

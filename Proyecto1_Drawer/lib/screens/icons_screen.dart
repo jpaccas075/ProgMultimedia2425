@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class IconsScreen extends StatelessWidget {
   const IconsScreen({super.key});
@@ -9,6 +10,7 @@ class IconsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Iconos'),
       ),
+      drawer: const AppDrawer(),
       body: const Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class ColumnPhotosScreen extends StatelessWidget {
   const ColumnPhotosScreen({super.key});
@@ -9,6 +10,7 @@ class ColumnPhotosScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Fotos en Columna'),
       ),
+      drawer: const AppDrawer(),
       body: Center(
         // Centra el contenido en el cuerpo de la pantalla
         child: Column(

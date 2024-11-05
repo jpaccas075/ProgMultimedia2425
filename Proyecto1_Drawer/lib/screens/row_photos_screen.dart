@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class RowPhotosScreen extends StatelessWidget {
   const RowPhotosScreen({super.key});
@@ -9,6 +10,7 @@ class RowPhotosScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Fotos en Fila'),
       ),
+      drawer: const AppDrawer(),
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 import 'package:drawer/screens/screens.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -8,6 +9,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: obtieneAppBar(), // Función que devuelve el AppBar
+      drawer: const AppDrawer(),
       body: const Column(
         children: [
           SeccionSuperior(), // Parte superior

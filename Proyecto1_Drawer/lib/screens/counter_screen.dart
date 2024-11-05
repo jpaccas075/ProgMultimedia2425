@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:drawer/menu_lateral.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
@@ -20,6 +21,7 @@ class _CounterScreenState extends State<CounterScreen> {
         elevation: 10.0,
         shadowColor: Colors.black.withOpacity(1),
       ),
+      drawer: const AppDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
