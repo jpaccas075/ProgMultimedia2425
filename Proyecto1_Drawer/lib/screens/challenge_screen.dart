@@ -17,9 +17,7 @@ class ChallengeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          title: const Text('Retos web', style: TextStyle(color: Colors.white)),
-          elevation: 10.0,
+          title: const Text('Retos web'),
           shadowColor: Colors.black.withOpacity(0.5),
         ),
         drawer: const AppDrawer(),

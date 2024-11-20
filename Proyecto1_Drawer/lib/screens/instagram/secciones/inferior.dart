@@ -8,8 +8,6 @@ class SeccionInferior extends StatefulWidget {
 }
 
 class _SeccionInferiorState extends State<SeccionInferior> {
-  bool muestraGrid = true;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +29,8 @@ class _SeccionInferiorState extends State<SeccionInferior> {
                 const SizedBox(width: 12),
                 construyeColumna('assets/images/praga.jpg', "Praga y Bu..."),
                 const SizedBox(width: 12),
-                construyeColumna('assets/images/arquitectura.jpg', "Arquitectura"),
+                construyeColumna(
+                    'assets/images/arquitectura.jpg', "Arquitectura"),
                 const SizedBox(width: 12),
                 construyeColumna('assets/images/dali.jpg', "Retratos"),
                 const SizedBox(width: 12),
@@ -40,63 +39,76 @@ class _SeccionInferiorState extends State<SeccionInferior> {
             ),
           ),
         ),
-        const SizedBox(height: 2),
-        // Iconos clicables para cambiar el State y mostrar lo que haya en el mismo
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.grid_on_rounded, size: 30),
-              onPressed: () {
-                setState(() {
-                  muestraGrid = true;
-                });
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.person_pin_sharp, size: 30),
-              onPressed: () {
-                setState(() {
-                  muestraGrid = false;
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        // Grid de imágenes/Imagen "time to relax" (lo que se muestra depende del valor de la variable muestraGrid)
         Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              height: 200,
-              child: muestraGrid
-                  ? GridView.count(
-                      mainAxisSpacing: 2,
-                      crossAxisSpacing: 2,
-                      crossAxisCount: 3,
-                      children: List.generate(9, (index) {
-                        return SizedBox(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset(
-                            'assets/images/grid${index + 1}.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                      }),
-                    )
-                  : Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/relax.jpg'),
-                            fit: BoxFit.cover,
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 260,
+            child: DefaultTabController(
+              length: 3, // Tres pestañas
+              child: Column(
+                children: [
+                  // TabBar para cambiar entre las vistas
+                  const TabBar(
+                    tabs: [
+                      Tab(icon: Icon(Icons.grid_on_rounded, size: 30)),
+                      Tab(icon: Icon(Icons.person_pin_rounded, size: 30)),
+                      Tab(icon: Icon(Icons.book_rounded, size: 30)),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  // TabBarView para mostrar el contenido dinámico
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        // Primera pestaña: Grid de imágenes
+                        GridView.count(
+                          mainAxisSpacing: 2,
+                          crossAxisSpacing: 2,
+                          crossAxisCount: 3,
+                          children: List.generate(9, (index) {
+                            return SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Image.asset(
+                                'assets/images/grid${index + 1}.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            );
+                          }),
+                        ),
+                        // Segunda pestaña: Imagen "Time to Relax"
+                        Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              image: const DecorationImage(
+                                image: AssetImage('assets/images/relax.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        // Tercera pestaña: Extracto Don Quijote
+                        const SingleChildScrollView(
+                          padding: EdgeInsets.all(12.0),
+                          child: Text(
+                            '''En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.\n\nUna olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.\n\nEl resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.''',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-            )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         // Iconos footer
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -20,6 +20,8 @@ class _GameScreenState extends State<GameScreen> {
   final Random random = Random();
   String imagenSeleccionada = '';
   final double alturaImagen = 110;
+  int elementosNoPulsados = 0; // Contador de elementos no pulsados
+  bool juegoPausado = false; // Indica si el juego está pausado
 
   // Lista de imágenes
   final List<String> imagenes = [
@@ -55,6 +57,7 @@ class _GameScreenState extends State<GameScreen> {
 
   // Función que genera una nueva ronda
   void iniciarNuevaRonda() {
+    if (juegoPausado) return; // No iniciar una nueva ronda si el juego está pausado
     // Cancela cualquier temporizador activo
     _temporizador.cancel();
     // Obtiene las dimensiones de la pantalla
@@ -70,18 +73,31 @@ class _GameScreenState extends State<GameScreen> {
       ejeX = random.nextDouble() * maxEjeX;
       ejeY = minEjeY + random.nextDouble() * (maxEjeY - minEjeY);
       muestraImagen = true; // Muestra la imagen en la nueva posición
-      imagenSeleccionada = imagenes[
-          random.nextInt(imagenes.length)]; // Selecciona una imagen aleatoria
+      imagenSeleccionada = imagenes[random.nextInt(imagenes.length)]; // Selecciona una imagen aleatoria
     });
+    
     // Inicia el temporizador
     _temporizador = Timer(Duration(milliseconds: limiteTiempo), () {
       if (muestraImagen) {
         setState(() {
-          puntuacion = (puntuacion - 2 < 0)
-              ? 0
-              : puntuacion - 2; // Verifica que la puntuación no sea negativa
-          muestraImagen =
-              false; // Esconde la imagen después de que pase el tiempo
+          puntuacion = (puntuacion - 2 < 0) ? 0 : puntuacion - 2; // Verifica que la puntuación no sea negativa
+          muestraImagen = false; // Esconde la imagen después de que pase el tiempo
+          elementosNoPulsados += 1; // Incrementa el contador de elementos no pulsados
+
+          // Si no se han pulsado 3 elementos de manera consecutiva, se informa
+          if (elementosNoPulsados == 3) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Center(
+                  child: Text(
+                    '¡Muy lento, dejaste escapar a 3 bichos seguidos!',
+                  ),
+                ),
+                duration: Duration(seconds: 1),
+              ),
+            );
+            elementosNoPulsados = 0; // Reinicia el contador de elementos no pulsados
+          }
         });
         iniciarNuevaRonda(); // Inicia una nueva ronda
       }
@@ -90,12 +106,29 @@ class _GameScreenState extends State<GameScreen> {
 
   // Función que se llama cuando se toca la imagen
   void imagenPulsada() {
-    if (muestraImagen) {
+    if (muestraImagen && !juegoPausado) {
       setState(() {
         puntuacion += 1; // Suma 1 punto si se toca la imagen
         muestraImagen = false; // Esconde la imagen después de tocarla
+        elementosNoPulsados = 0; // Reinicia el contador de elementos no pulsados
       });
-      iniciarNuevaRonda(); // Inicia una nueva ronda
+
+      // Si la puntuación es un múltiplo de 10, se informa
+      if (puntuacion % 10 == 0) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Center(child: Text('¡Genial, llevas $puntuacion puntos!')),
+            duration: const Duration(seconds: 1),
+          ),
+        );
+      }
+
+      // Si la puntuación llega a 25 se muestra un diálogo
+      if (puntuacion == 25) {
+        _mostrarDialogoFelicitacion(context);
+      } else {
+        iniciarNuevaRonda(); // Inicia una nueva ronda
+      }
     }
   }
 
@@ -103,11 +136,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text('Gotta catch \'em all!',
-            style: TextStyle(color: Colors.white)),
-        elevation: 10.0,
-        shadowColor: Colors.black.withOpacity(1),
+        title: const Text('Gotta catch \'em all!'),
       ),
       drawer: const AppDrawer(),
       body: Container(
@@ -120,7 +149,7 @@ class _GameScreenState extends State<GameScreen> {
             // Muestra la puntuación en la parte superior
             Positioned(
               top: 20,
-              left: 100,
+              left: 115,
               child: Text(
                 'Puntuación: $puntuacion',
                 style:
@@ -145,5 +174,66 @@ class _GameScreenState extends State<GameScreen> {
         ),
       ),
     );
+  }
+
+// Función para mostrar el diálogo de felicitación
+  Future<void> _mostrarDialogoFelicitacion(BuildContext context) async {
+    setState(() {
+      juegoPausado = true; // Pausa el juego
+    });
+
+    final respuesta = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('¡Felicidades!', textAlign: TextAlign.center),
+          content:
+              const Text('¡Has alcanzado 25 puntos! ¿Te está gustando el juego?', textAlign: TextAlign.center),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Center(child: Text('Sí, por ahora bien')),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Center(child: Text('No, menuda porquería')),
+            ),
+          ],
+        );
+      },
+    );
+
+    // Muestra un SnackBar según la respuesta
+    if (respuesta == true) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Center(
+            child: Text(
+              '¡Gracias! Puedes continuar jugando entonces. 😊',
+            ),
+          ),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } else if (respuesta == false) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Center(
+            child: Text(
+              '😢😢😢😢😢',
+            ),
+          ),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+
+    setState(() {
+      juegoPausado = false;
+    });
+
+    iniciarNuevaRonda(); // Reanuda el juego al cerrar el diálogo
   }
 }

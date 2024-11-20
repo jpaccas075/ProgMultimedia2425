@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'routes/app_routes.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -25,8 +26,7 @@ class AppDrawer extends StatelessWidget {
               leading: const Icon(Icons.person),
               title: const Text('Nombre y Apellidos'),
               onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/name');
+                Navigator.of(context).pushReplacementNamed(AppRoutes.name);
               },
             ),
           ),
@@ -34,64 +34,56 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.photo),
             title: const Text('Fotos en Fila'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/rowPhotos');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.rowPhotos);
             },
           ),
           ListTile(
             leading: const Icon(Icons.photo_album),
             title: const Text('Fotos en Columna'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/columnPhotos');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.columnPhotos);
             },
           ),
           ListTile(
             leading: const Icon(Icons.star),
             title: const Text('Iconos'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/icons');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.icons);
             },
           ),
           ListTile(
             leading: const Icon(Icons.stadium),
             title: const Text('Reto'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/challenge');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.challenge);
             },
           ),
           ListTile(
             leading: const Icon(Icons.park_outlined),
             title: const Text('Disposición'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/disposition');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.disposition);
             },
           ),
           ListTile(
             leading: const Icon(Icons.replay_circle_filled_rounded),
             title: const Text('Contador'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/counter');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.counter);
             },
           ),
           ListTile(
             leading: const Icon(Icons.photo_camera_rounded),
             title: const Text('Instagram'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/instagram');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.instagram);
             },
           ),
           ListTile(
             leading: const Icon(Icons.gamepad_rounded),
             title: const Text('Juego'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/game');
+              Navigator.of(context).pushReplacementNamed(AppRoutes.game);
             },
           ),
         ],

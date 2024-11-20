@@ -8,6 +8,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: obtieneAppBar(), // Función que devuelve el AppBar
       drawer: const AppDrawer(),
       body: const Column(

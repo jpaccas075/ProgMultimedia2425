@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:drawer/menu_lateral.dart';
-// Importación unificada
-import 'screens/screens.dart';
+// Rutas en fichero externo
+import 'routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,22 +16,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ejercicio Drawer',
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Define el tema de la aplicación con un color primario azul
+        // Theme personalizado
+        scaffoldBackgroundColor: Colors.amberAccent[100],
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.blueAccent,
+          foregroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.white),
+          elevation: 10.0,
+          shadowColor: Colors.black.withOpacity(1)
+        ),
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 22, fontWeight: FontWeight.bold)
+        )
       ),
-      // Rutas nombradas
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-        '/name': (context) => const NameScreen(),
-        '/rowPhotos': (context) => const RowPhotosScreen(),
-        '/columnPhotos': (context) => const ColumnPhotosScreen(),
-        '/icons': (context) => const IconsScreen(),
-        '/challenge': (context) => const ChallengeScreen(),
-        '/disposition': (context) => const DispositionScreen(),
-        '/counter': (context) => const CounterScreen(),
-        '/instagram': (context) => const MyHomePage(),
-        '/game': (context) => const GameScreen(),
-      },
+      initialRoute: AppRoutes.home,
+      routes: AppRoutes.routes,
     );
   }
 }

@@ -8,11 +8,7 @@ class DispositionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: const Text('Disposición en pantalla',
-            style: TextStyle(color: Colors.white)),
-        elevation: 10.0,
-        shadowColor: Colors.black.withOpacity(1),
+        title: const Text('Disposición en pantalla'),
       ),
       drawer: const AppDrawer(),
       body: Container(
