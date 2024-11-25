@@ -47,21 +47,23 @@ class _CounterScreenState extends State<CounterScreen> {
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
-            child: const Icon(Icons.exposure_minus_1),
             onPressed: () {
               setState(() {
                 if (clickCounter > 0) clickCounter--;
               });
             },
+            heroTag: 'tag_1', // Asigna un tag único
+            child: const Icon(Icons.exposure_minus_1),
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
-            child: const Icon(Icons.refresh),
             onPressed: () {
               setState(() {
                 clickCounter = 0;
               });
             },
+            heroTag: 'tag_2',
+            child: const Icon(Icons.refresh),
           ),
         ],
       ),
