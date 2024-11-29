@@ -36,6 +36,7 @@ flutter:
     - assets/images/perrete.png
     - assets/images/pattern.png
     - assets/images/pattern2.png
+    - assets/images/pattern3.jpg
     - assets/images/retrato.jpg
     - assets/images/nuevo.jpg
     - assets/images/piloto.png
@@ -53,3 +54,43 @@ flutter:
     - assets/images/grid8.jpg
     - assets/images/grid9.jpg
     - assets/images/relax.jpg
+    - assets/images/oros1.jpg
+    - assets/images/oros2.jpg
+    - assets/images/oros3.jpg
+    - assets/images/oros4.jpg
+    - assets/images/oros5.jpg
+    - assets/images/oros6.jpg
+    - assets/images/oros7.jpg
+    - assets/images/oros10.jpg
+    - assets/images/oros11.jpg
+    - assets/images/oros12.jpg
+    - assets/images/bastos1.jpg
+    - assets/images/bastos2.jpg
+    - assets/images/bastos3.jpg
+    - assets/images/bastos4.jpg
+    - assets/images/bastos5.jpg
+    - assets/images/bastos6.jpg
+    - assets/images/bastos7.jpg
+    - assets/images/bastos10.jpg
+    - assets/images/bastos11.jpg
+    - assets/images/bastos12.jpg
+    - assets/images/espadas1.jpg
+    - assets/images/espadas2.jpg
+    - assets/images/espadas3.jpg
+    - assets/images/espadas4.jpg
+    - assets/images/espadas5.jpg
+    - assets/images/espadas6.jpg
+    - assets/images/espadas7.jpg
+    - assets/images/espadas10.jpg
+    - assets/images/espadas11.jpg
+    - assets/images/espadas12.jpg
+    - assets/images/copas1.jpg
+    - assets/images/copas2.jpg
+    - assets/images/copas3.jpg
+    - assets/images/copas4.jpg
+    - assets/images/copas5.jpg
+    - assets/images/copas6.jpg
+    - assets/images/copas7.jpg
+    - assets/images/copas10.jpg
+    - assets/images/copas11.jpg
+    - assets/images/copas12.jpg

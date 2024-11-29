@@ -10,3 +10,4 @@ export 'package:drawer/screens/instagram/secciones/superior.dart';
 export 'package:drawer/screens/instagram/secciones/media.dart';
 export 'package:drawer/screens/instagram/secciones/inferior.dart';
 export 'package:drawer/screens/game_screen.dart';
+export 'package:drawer/screens/siete_y_media/juego.dart';

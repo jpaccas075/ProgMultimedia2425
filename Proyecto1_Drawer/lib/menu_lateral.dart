@@ -41,7 +41,8 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.photo_album),
             title: const Text('Fotos en Columna'),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed(AppRoutes.columnPhotos);
+              Navigator.of(context)
+                  .pushReplacementNamed(AppRoutes.columnPhotos);
             },
           ),
           ListTile(
@@ -84,6 +85,13 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Juego'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed(AppRoutes.game);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.casino_rounded),
+            title: const Text('Siete y media'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(AppRoutes.sieteYMedia);
             },
           ),
         ],
