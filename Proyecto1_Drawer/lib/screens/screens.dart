@@ -12,3 +12,4 @@ export 'package:drawer/screens/instagram/secciones/inferior.dart';
 export 'package:drawer/screens/game_screen.dart';
 export 'package:drawer/screens/siete_y_media/juego.dart';
 export 'package:drawer/screens/formulario.dart';
+export 'package:drawer/screens/formulario_nodual.dart';

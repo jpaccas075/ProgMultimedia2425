@@ -114,6 +114,14 @@ class AppDrawer extends StatelessWidget {
                         .pushReplacementNamed(AppRoutes.formulario);
                   },
                 ),
+                ListTile(
+                  leading: const Icon(Icons.format_align_left_rounded),
+                  title: const Text('Formulario (No Dual)'),
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(AppRoutes.formularioNoDual);
+                  },
+                ),
               ],
             ),
           ),
