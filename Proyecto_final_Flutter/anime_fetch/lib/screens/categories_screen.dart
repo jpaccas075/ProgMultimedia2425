@@ -34,7 +34,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       length: 9, // Número de pestañas. En este caso, hay 9 categorías.
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Anime Categories'),
+          title: const Text('Categories'),
+          centerTitle: true,
           bottom: TabBar(
             // Lista de pestañas generadas dinámicamente a partir de '_animeTabs'.
             tabs: _animeTabs,

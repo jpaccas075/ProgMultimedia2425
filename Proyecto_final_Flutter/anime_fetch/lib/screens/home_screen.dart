@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '/screens/animes_screen.dart';
 import '/screens/categories_screen.dart';
+import '/screens/notes_screen.dart';
 import '/screens/search_screen.dart';
+import '/screens/settings_screen.dart';
 
 /// Pantalla que gestiona la navegación entre diferentes pantallas.
 class HomeScreen extends StatefulWidget {
@@ -30,11 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Lista de destinos del 'BottomNavigationBar'.
   final _destinations = [
-    const NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-    const NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+    const NavigationDestination(icon: Icon(Icons.home_rounded), label: 'Home'),
+    const NavigationDestination(icon: Icon(Icons.search_rounded), label: 'Search'),
     const NavigationDestination(
         icon: Icon(Icons.category), label: 'Categories'),
-    const NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
+    const NavigationDestination(icon: Icon(Icons.note_add_rounded), label: 'MyNotes'),
+    const NavigationDestination(icon: Icon(Icons.settings_rounded), label: 'Settings'),
   ];
 
   // Lista de pantallas asociadas a los destinos.
@@ -42,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     AnimesScreen(),
     SearchScreen(),
     CategoriesScreen(),
-    Center(child: Text('Settings Screen')),
+    NotesScreen(),
+    SettingsScreen(),
   ];
 
   @override

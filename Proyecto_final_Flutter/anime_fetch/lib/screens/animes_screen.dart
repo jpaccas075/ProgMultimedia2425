@@ -17,7 +17,8 @@ class _AnimesScreenState extends State<AnimesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Anime Fetch'),
+        title: const Text('AnimeFetch'),
+        centerTitle: true,
         actions: [
           // Botón de búsqueda en la barra superior.
           IconButton(

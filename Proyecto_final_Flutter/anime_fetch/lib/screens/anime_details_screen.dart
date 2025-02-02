@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '/api/get_anime_details.dart';
 import '/common/extensions/extensions.dart';
@@ -10,6 +11,7 @@ import '/common/widgets/network_image_view.dart';
 import '/common/widgets/read_more_text.dart';
 import '/core/screens/error_screen.dart';
 import '/core/widgets/loader.dart';
+import '/cubits/anime_title_language_cubit.dart';
 import '/models/anime_details.dart';
 import '/models/picture.dart';
 import '/views/similar_animes_view.dart';
@@ -142,15 +144,19 @@ class AnimeDetailsScreen extends StatelessWidget {
         ],
       );
 
-  // Construye el título del anime.
+  // Construye el título del anime con idioma configurable.
   Widget _buildAnimeTitle({
     required String name,
     required String englishName,
   }) =>
-      Builder(
-        builder: (context) {
+      BlocBuilder<AnimeTitleLanguageCubit, bool>(
+        // Escucha cambios en el estado del idioma.
+        builder: (context, state) {
+          bool isEnglish = state;
           return Text(
-            englishName,
+            isEnglish
+                ? englishName
+                : name, // Cambia entre inglés y nombre original.
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,

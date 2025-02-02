@@ -16,31 +16,34 @@ Devuelve:
 Future<Iterable<Anime>> getAnimesbySearchApi({
   required String query,
 }) async {
-  // Construye la URL de la API con la consulta de búsqueda y un límite de 10 resultados.
-  final baseUrl = "https://api.myanimelist.net/v2/anime?q=$query&limit=10";
+  try {
+    // Construye la URL de la API con los parámetros recibidos.
+    final baseUrl = "https://api.myanimelist.net/v2/anime?q=$query&limit=10";
 
-  // Realiza la solicitud HTTP.
-  final response = await http.get(
-    Uri.parse(baseUrl),
-    headers: {
-      'X-MAL-CLIENT-ID': apiKey,
-    },
-  );
+    // Realiza la solicitud HTTP GET a la API.
+    final response = await http.get(
+      Uri.parse(baseUrl),
+      headers: {'X-MAL-CLIENT-ID': apiKey},
+    );
 
-  if (response.statusCode == 200) {
-    // Respuesta exitosa: decodifica la respuesta JSON en un mapa de datos.
-    final Map<String, dynamic> data = json.decode(response.body);
+    // Verifica si la respuesta fue exitosa.
+    if (response.statusCode == 200) {
+      // Decodifica la respuesta JSON.
+      final Map<String, dynamic> data = json.decode(response.body);
 
-    // Crea un objeto AnimeInfo a partir de los datos decodificados.
-    AnimeInfo animeInfo = AnimeInfo.fromJson(data);
+      // Convierte los datos en un objeto de tipo AnimeInfo.
+      AnimeInfo animeInfo = AnimeInfo.fromJson(data);
 
-    // Obtiene la lista de animes desde el objeto AnimeInfo.
-    Iterable<Anime> animes = animeInfo.animes;
-
-    return animes;
-  } else {
-    debugPrint("Error: ${response.statusCode}");
-    debugPrint("Body: ${response.body}");
-    throw Exception("Failed to get data!");
+      // Devuelve la lista de animes obtenida.
+      return animeInfo.animes;
+    } else {
+      debugPrint("Error: ${response.statusCode} - ${response.body}");
+      // Devuelve una lista vacía para evitar que la aplicación se bloquee.
+      return [];
+    }
+  } catch (e) {
+    debugPrint("Exception: $e");
+    // Devuelve una lista vacía en caso de excepción para mantener la estabilidad de la app.
+    return [];
   }
 }

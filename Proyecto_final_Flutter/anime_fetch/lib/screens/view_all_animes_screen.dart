@@ -19,6 +19,7 @@ class ViewAllAnimesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(label),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: getAnimeByRankingTypeApi(rankingType: rankingType, limit: 500),

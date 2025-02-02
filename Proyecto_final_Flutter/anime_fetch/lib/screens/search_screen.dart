@@ -125,7 +125,7 @@ class AnimeSearchDelegate extends SearchDelegate<List<AnimeNode>> {
     if (query.isEmpty) {
       // Si no hay texto de búsqueda, muestra un mensaje orientativo.
       return const Center(
-        child: Text('Enter search query'),
+        child: Text('Enter search query (at least 3 characters)'),
       );
     } else {
       // Realiza la búsqueda y construye una lista de resultados.
